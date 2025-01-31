@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Checkout JKS</title>
+</head>
+<body>
+    <main class="main flow">
+        <h1 class="main__heading">Checkout</h1>
+        <form id="checkout-form" class="checkout-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" name="card-number" required>
+
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" name="expiry-date" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required>
+
+            <button type="submit" class="cta">Complete Purchase</button>
+        </form>
+    </main>
+
+    <script>
+        // Obtener el plan seleccionado de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan');
+
+        // Mostrar el plan seleccionado en el formulario
+        const form = document.getElementById('checkout-form');
+        form.insertAdjacentHTML('afterbegin', `<p>You are purchasing the <strong>${plan}</strong> plan.</p>`);
+
+        // Manejar el envío del formulario
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert(`Thank you for purchasing the ${plan} plan!`);
+            // Aquí podrías agregar la lógica para procesar el pago
+        });
+    </script>
+</body>
+</html>
